@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KELAS BELAJAR | Latihan Interaktif Koordinat Kartesius</title>
+<style>
+:root{--bg:#080d25;--panel:#111b3d;--panel2:#172650;--cyan:#42d9f5;--blue:#477bff;--purple:#8d63ff;--yellow:#ffd45c;--text:#f5f7ff;--muted:#b9c5e6;--green:#43d69a;--red:#ff7186}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 0%,#25316a 0,#101738 38%,#080d25 78%);color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:20px;overflow-x:hidden}
+button,select{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:12px 16px;font-weight:700;transition:.2s}button:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.app{display:block;min-height:100vh}main{width:100%;max-width:none;min-height:100vh;margin:0;padding:clamp(12px,2vw,28px) clamp(14px,3vw,48px) 112px;display:flex;flex-direction:column}
+.top{position:relative;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:clamp(10px,1.5vh,18px)}
+.brand{font-size:25px;font-weight:900;letter-spacing:1px}.brand span{color:var(--cyan)}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:1.5px}
+.top-controls{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:12px;max-width:100%}.top-control-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.control-caption{font-weight:900;color:var(--cyan);letter-spacing:.5px}.top-control-group button{min-height:46px;padding:10px 14px}
+.level-btn{background:#172348;color:#eaf1ff;border:1px solid #ffffff24}.level-btn.active{background:linear-gradient(110deg,#2864d9,#714ee4);border-color:#83dfff}.tool{background:#26345f;color:white;border:1px solid #ffffff20}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.pill{padding:10px 15px;border-radius:999px;background:#17264e;border:1px solid #526ca8;color:#eaf4ff;font-weight:700}.pill.level{background:#392d70;border-color:#9475ff;color:#e8ddff}.pill.number{background:#103c55;border-color:#43d9f5;color:#bff7ff}
+.card{flex:1 1 auto;min-height:0;width:100%;display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(18px,3vw,48px);border-radius:26px;background:linear-gradient(145deg,#14234a,#101a39);border:1px solid #ffffff20;box-shadow:0 20px 55px #03071855}
+.cardhead{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:clamp(12px,2vh,24px)}.card h2{font-size:26px;margin:0}
+.objective{font-size:20px;color:#d1ddff;background:#0b1534;padding:14px 16px;border-radius:14px;border-left:4px solid var(--yellow);line-height:1.5;margin-bottom:20px}
+.question{font-size:clamp(25px,3vw,42px);line-height:1.48;white-space:pre-wrap;color:#fff;margin:0 0 22px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.8vw,22px);align-items:start;grid-auto-rows:min-content}
+.option{display:flex;align-items:flex-start;gap:12px;text-align:left;color:white;background:#1b2b56;border:2px solid #3b4d7b;padding:16px 18px;border-radius:16px;line-height:1.5;min-height:0;height:auto;align-self:start;white-space:normal;overflow-wrap:anywhere}
+.option input{width:24px;height:24px;accent-color:var(--cyan);flex:0 0 auto;margin:4px 0 0}.option.selected{border-color:var(--cyan);background:#123c58}.option.correct{border-color:var(--green);background:#104536}.option.wrong{border-color:var(--red);background:#4a2035}.option span{min-width:0;flex:1 1 auto;white-space:normal;overflow-wrap:anywhere}
+.feedback{margin-top:18px;padding:18px;border-radius:16px;line-height:1.55;display:none;background:#0d2b2b;border:1px solid #35bd91}.feedback.show{display:block}.feedback.wrong{background:#3a1d30;border-color:#e66b8b}
+.explain{margin-top:16px;padding:18px;background:#0b1532;border:1px solid #344775;border-radius:16px;line-height:1.6;white-space:pre-wrap;display:none}.explain.show{display:block}.small{color:var(--muted)}
+.graph-wrap{width:min(100%,520px);margin:8px auto 24px;padding:10px;background:#f7faff;border-radius:16px}.graph-wrap svg{display:block;width:100%;height:auto}
+.below-controls{position:fixed;left:0;right:0;bottom:0;z-index:1000;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:10px;margin:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));width:100%;overflow-x:auto;overflow-y:hidden;white-space:nowrap;background:rgba(7,13,37,.97);border-top:1px solid #6386d9;box-shadow:0 -10px 30px #0008;backdrop-filter:blur(12px)}
+.below-controls button{flex:0 0 auto;min-height:50px;padding:12px 16px}.primary{background:linear-gradient(100deg,#2386e9,#7556ed);color:white}.secondary{background:#27365e;color:white;border:1px solid #ffffff24}
+footer{text-align:center;color:#8f9fc8;margin:24px 0 8px}body.projector main{padding:2vh 3vw 112px}body.projector .card{padding:clamp(22px,4vw,60px)}body.projector .question{font-size:clamp(28px,3.4vw,48px)}body.projector .option{font-size:clamp(24px,2.4vw,34px);min-height:96px}
+html,body,body *{font-size:20px!important}.card h2{font-size:26px!important}.question{font-size:clamp(25px,3vw,42px)!important}
+@media(max-width:760px){.top{align-items:flex-start;flex-direction:column}.top-controls{justify-content:flex-start;width:100%}.top-control-group{width:100%}.top-control-group button{flex:1 1 auto}}
+@media(max-width:700px){main{padding:12px 12px 112px}.options{grid-template-columns:minmax(0,1fr)}.question{font-size:25px!important;line-height:1.45}.option{width:100%;padding:14px 16px}.card{padding:18px}.meta{gap:7px}.pill{padding:8px 11px}.below-controls{gap:8px;padding:10px 10px calc(10px + env(safe-area-inset-bottom))}.below-controls button{padding:11px 13px;min-height:48px}}
+@media print{body{background:#fff;color:#111}.top-controls,.below-controls,footer{display:none!important}.card{background:#fff;color:#111;box-shadow:none;border:1px solid #aaa}.question{color:#111}.option{background:#fff;color:#111;border:1px solid #aaa}}
+html, body, body * {font-size:20px!important}
+html body main .card .question,html body main .card .question *,html body main .card .objective,html body main .card .objective *{font-size:20px!important}
+</style></head><body>
+<div class="app"><main>
+<div class="top">
+ <div><div class="brand">KELAS <span>BELAJAR</span></div><div class="eyebrow">LATIHAN INTERAKTIF · KOORDINAT KARTESIUS</div></div>
+ <div class="top-controls">
+  <div class="top-control-group"><span class="control-caption">LEVEL SOAL</span>
+   <button class="level-btn active" data-level="all">Semua Level</button><button class="level-btn" data-level="1">Level 1</button><button class="level-btn" data-level="2">Level 2</button><button class="level-btn" data-level="3">Level 3</button>
+  </div>
+  <div class="top-control-group"><span class="control-caption">TAMPILAN</span>
+   <button class="tool" id="projectorBtn">⛶ Mode Presentasi</button><button class="tool" id="fullscreenBtn">Layar Penuh</button><button class="tool" onclick="window.print()">Cetak</button>
+  </div>
+ </div>
+</div>
+<div class="meta"><span class="pill level" id="levelPill">LEVEL 1</span><span class="pill number" id="numberPill">SOAL 1</span><span class="pill" id="typePill">Pilihan Ganda</span><span class="pill" id="progressPill">Terjawab 0 / 18</span></div>
+<section class="card">
+ <div class="cardhead"><h2 id="questionTitle">Pertanyaan</h2><span class="small" id="counter">1 / 18</span></div>
+ <div class="objective" id="objective"></div>
+ <div class="question" id="questionText"></div>
+ <div id="interactionArea"></div>
+ <div class="feedback" id="feedback" aria-live="polite"></div>
+ <div class="explain" id="explanation"></div>
+</section>
+<footer>KELAS BELAJAR · Belajar Aktif, Berpikir Kritis, Raih Prestasi</footer>
+<div class="below-controls">
+ <button class="secondary" id="prevBtn">← Soal Sebelumnya</button>
+ <button class="primary" id="nextBtn">Soal Selanjutnya →</button>
+ <button class="primary" id="checkBtn">Periksa Jawaban</button>
+ <button class="secondary" id="revealBtn">Tampilkan Kunci & Pembahasan</button>
+ <button class="secondary" id="hideBtn" style="display:none">Sembunyikan Pembahasan</button>
+</div>
+</main></div>
+<script>
+const questions = [{"number": 1, "level": 1, "type": "Pilihan Ganda", "objective": "Mengidentifikasi sumbu-X, sumbu-Y, titik asal, dan bagian-bagian bidang koordinat Kartesius.", "question": "Garis bilangan yang mendatar pada bidang koordinat Kartesius disebut ....", "options": [{"key": "A", "text": "Sumbu-X"}, {"key": "B", "text": "Sumbu-Y"}, {"key": "C", "text": "Titik asal"}, {"key": "D", "text": "Kuadran"}], "answer": "A", "explanation": "Sumbu-X adalah garis mendatar (horizontal) pada bidang koordinat Kartesius."}, {"number": 2, "level": 1, "type": "Pilihan Ganda", "objective": "Mengidentifikasi sumbu-X, sumbu-Y, titik asal, dan bagian-bagian bidang koordinat Kartesius.", "question": "Titik tempat sumbu-X dan sumbu-Y berpotongan disebut ....", "options": [{"key": "A", "text": "Kuadran I"}, {"key": "B", "text": "Titik asal O(0, 0)"}, {"key": "C", "text": "Koordinat x"}, {"key": "D", "text": "Titik maksimum"}], "answer": "B", "explanation": "Titik asal adalah titik perpotongan sumbu-X dan sumbu-Y. Koordinat titik asal adalah O(0, 0)."}, {"number": 3, "level": 1, "type": "Pilihan Ganda", "objective": "Menentukan letak titik berdasarkan pasangan berurutan serta mengidentifikasi kuadran titik tersebut.", "question": "Titik P(3, 5) terletak pada kuadran ....", "options": [{"key": "A", "text": "I"}, {"key": "B", "text": "II"}, {"key": "C", "text": "III"}, {"key": "D", "text": "IV"}], "answer": "A", "explanation": "Koordinat P(3, 5) memiliki x positif dan y positif. Titik dengan kedua koordinat positif terletak di Kuadran I."}, {"number": 4, "level": 1, "type": "Pilihan Ganda", "objective": "Menentukan letak titik berdasarkan pasangan berurutan serta mengidentifikasi kuadran titik tersebut.", "question": "Perhatikan bidang koordinat berikut. Koordinat titik A adalah ....", "graph": {"points": [{"x": -3, "y": 2, "label": "A"}]}, "options": [{"key": "A", "text": "(−3, 2)"}, {"key": "B", "text": "(3, 2)"}, {"key": "C", "text": "(−3, −2)"}, {"key": "D", "text": "(2, −3)"}], "answer": "A", "explanation": "Titik A berada 3 satuan ke kiri dan 2 satuan ke atas dari titik asal. Jadi, koordinatnya adalah (−3, 2)."}, {"number": 5, "level": 1, "type": "Pilihan Ganda", "objective": "Menentukan letak titik berdasarkan pasangan berurutan serta mengidentifikasi kuadran titik tersebut.", "question": "Berdasarkan gambar, titik B berada pada kuadran ....", "graph": {"points": [{"x": 4, "y": -2, "label": "B"}]}, "options": [{"key": "A", "text": "I"}, {"key": "B", "text": "II"}, {"key": "C", "text": "III"}, {"key": "D", "text": "IV"}], "answer": "D", "explanation": "Titik B(4, −2) memiliki x positif dan y negatif. Oleh karena itu, titik B terletak di Kuadran IV."}, {"number": 6, "level": 1, "type": "Pilihan Ganda", "objective": "Menentukan letak titik berdasarkan pasangan berurutan serta mengidentifikasi kuadran titik tersebut.", "question": "Titik C(−2, −4) berada pada kuadran ....", "options": [{"key": "A", "text": "I"}, {"key": "B", "text": "II"}, {"key": "C", "text": "III"}, {"key": "D", "text": "IV"}], "answer": "C", "explanation": "Pada Kuadran III, koordinat x dan y keduanya bernilai negatif. Jadi, C(−2, −4) berada di Kuadran III."}, {"number": 7, "level": 1, "type": "Pilihan Ganda", "objective": "Menggambar titik berdasarkan pasangan berurutan dan menentukan koordinat suatu titik pada bidang Kartesius.", "question": "Perhatikan gambar. Pasangan koordinat titik D yang benar adalah ....", "graph": {"points": [{"x": 2, "y": -3, "label": "D"}]}, "options": [{"key": "A", "text": "(−2, 3)"}, {"key": "B", "text": "(2, −3)"}, {"key": "C", "text": "(3, −2)"}, {"key": "D", "text": "(−3, 2)"}], "answer": "B", "explanation": "Titik D berada 2 satuan ke kanan dan 3 satuan ke bawah dari titik asal. Koordinatnya (2, −3)."}, {"number": 8, "level": 1, "type": "Pilihan Ganda", "objective": "Mengidentifikasi titik-titik yang terletak pada sumbu koordinat.", "question": "Titik yang terletak pada sumbu-X adalah ....", "options": [{"key": "A", "text": "(0, 4)"}, {"key": "B", "text": "(−3, 0)"}, {"key": "C", "text": "(2, 5)"}, {"key": "D", "text": "(−1, −2)"}], "answer": "B", "explanation": "Setiap titik pada sumbu-X memiliki koordinat y = 0. Karena itu, (−3, 0) terletak pada sumbu-X."}, {"number": 9, "level": 2, "type": "Pilihan Ganda", "objective": "Menggambar titik berdasarkan pasangan berurutan dan menentukan koordinat suatu titik pada bidang Kartesius.", "question": "Pada gambar, titik E berada tepat di atas titik asal. Koordinat E adalah ....", "graph": {"points": [{"x": 0, "y": 3, "label": "E"}]}, "options": [{"key": "A", "text": "(3, 0)"}, {"key": "B", "text": "(0, 3)"}, {"key": "C", "text": "(0, −3)"}, {"key": "D", "text": "(−3, 0)"}], "answer": "B", "explanation": "Titik E berada pada sumbu-Y, 3 satuan di atas titik asal. Jadi, koordinatnya (0, 3)."}, {"number": 10, "level": 2, "type": "Pilihan Ganda", "objective": "Menggambar titik berdasarkan pasangan berurutan dan menentukan koordinat suatu titik pada bidang Kartesius.", "question": "Jika titik F(−5, 1) digambar pada bidang Kartesius, dari titik asal kita bergerak ....", "options": [{"key": "A", "text": "5 satuan ke kanan, 1 satuan ke atas"}, {"key": "B", "text": "5 satuan ke kiri, 1 satuan ke atas"}, {"key": "C", "text": "5 satuan ke kiri, 1 satuan ke bawah"}, {"key": "D", "text": "1 satuan ke kiri, 5 satuan ke atas"}], "answer": "B", "explanation": "Koordinat x = −5 berarti bergerak 5 satuan ke kiri. Koordinat y = 1 berarti bergerak 1 satuan ke atas."}, {"number": 11, "level": 2, "type": "Pilihan Ganda", "objective": "Menentukan letak titik berdasarkan pasangan berurutan serta mengidentifikasi kuadran titik tersebut.", "question": "Perhatikan bidang koordinat yang memuat titik G. Pernyataan yang tepat adalah ....", "graph": {"points": [{"x": -2, "y": -3, "label": "G"}]}, "options": [{"key": "A", "text": "G berada di Kuadran I"}, {"key": "B", "text": "G berada di Kuadran II"}, {"key": "C", "text": "G berada di Kuadran III"}, {"key": "D", "text": "G berada di Kuadran IV"}], "answer": "C", "explanation": "Titik G(−2, −3) memiliki x negatif dan y negatif, sehingga terletak di Kuadran III."}, {"number": 12, "level": 2, "type": "Pilihan Ganda", "objective": "Menggunakan koordinat Kartesius untuk menentukan posisi dan menyajikan letak objek pada denah sederhana.", "question": "Pada denah sekolah, gerbang berada di O(0, 0). Perpustakaan berada 4 satuan ke kanan dan 2 satuan ke atas dari gerbang. Koordinat perpustakaan adalah ....", "options": [{"key": "A", "text": "(4, 2)"}, {"key": "B", "text": "(−4, 2)"}, {"key": "C", "text": "(4, −2)"}, {"key": "D", "text": "(2, 4)"}], "answer": "A", "explanation": "Arah kanan menunjukkan x positif, sedangkan arah atas menunjukkan y positif. Koordinat perpustakaan adalah (4, 2)."}, {"number": 13, "level": 2, "type": "Pilihan Ganda", "objective": "Menyelesaikan masalah kontekstual yang melibatkan jarak dan posisi pada bidang koordinat Kartesius.", "question": "Pada peta, kantin berada di titik (−3, 2) dan lapangan di titik (2, 2). Jika satu satuan mewakili 10 meter, jarak mendatar antara keduanya adalah ....", "options": [{"key": "A", "text": "30 meter"}, {"key": "B", "text": "40 meter"}, {"key": "C", "text": "50 meter"}, {"key": "D", "text": "60 meter"}], "answer": "C", "explanation": "Selisih koordinat x = |2 − (−3)| = 5 satuan. Karena 1 satuan mewakili 10 meter, jaraknya 5 × 10 = 50 meter."}, {"number": 14, "level": 2, "type": "Pilihan Ganda", "objective": "Menggunakan koordinat Kartesius untuk menentukan posisi dan menyajikan letak objek pada denah sederhana.", "question": "Perhatikan gambar denah sederhana. Jika titik A adalah ruang kelas dan titik B adalah UKS, koordinat UKS adalah ....", "graph": {"points": [{"x": -3, "y": 1, "label": "A"}, {"x": 2, "y": -2, "label": "B"}]}, "options": [{"key": "A", "text": "(−3, 1)"}, {"key": "B", "text": "(2, −2)"}, {"key": "C", "text": "(−2, 2)"}, {"key": "D", "text": "(3, −1)"}], "answer": "B", "explanation": "Pada gambar, titik B berada 2 satuan ke kanan dan 2 satuan ke bawah dari titik asal. Koordinat UKS adalah (2, −2)."}, {"number": 15, "level": 3, "type": "Pilihan Ganda", "objective": "Menyelesaikan masalah kontekstual yang melibatkan perubahan posisi berdasarkan koordinat Kartesius.", "question": "Sebuah robot berada pada koordinat (−1, 2). Robot bergerak 4 satuan ke kanan tanpa bergerak ke atas atau ke bawah. Koordinat akhirnya adalah ....", "options": [{"key": "A", "text": "(−5, 2)"}, {"key": "B", "text": "(3, 2)"}, {"key": "C", "text": "(−1, 6)"}, {"key": "D", "text": "(3, −2)"}], "answer": "B", "explanation": "Koordinat x bertambah 4, yaitu −1 + 4 = 3. Koordinat y tetap 2. Jadi posisi akhirnya (3, 2)."}, {"number": 16, "level": 3, "type": "Pilihan Ganda", "objective": "Menafsirkan perpindahan antartitik pada bidang koordinat Kartesius.", "question": "Perhatikan bidang koordinat berikut. Perpindahan dari titik P ke titik Q adalah ....", "graph": {"points": [{"x": -3, "y": -1, "label": "P"}, {"x": 1, "y": 2, "label": "Q"}]}, "options": [{"key": "A", "text": "4 satuan ke kanan dan 3 satuan ke atas"}, {"key": "B", "text": "4 satuan ke kiri dan 3 satuan ke bawah"}, {"key": "C", "text": "3 satuan ke kanan dan 4 satuan ke atas"}, {"key": "D", "text": "4 satuan ke kanan dan 3 satuan ke bawah"}], "answer": "A", "explanation": "Dari P(−3, −1) ke Q(1, 2), koordinat x bertambah 4 satuan dan koordinat y bertambah 3 satuan."}, {"number": 17, "level": 3, "type": "Pilihan Ganda", "objective": "Menyelesaikan masalah kontekstual yang melibatkan perubahan posisi berdasarkan koordinat Kartesius.", "question": "Peta permainan memiliki titik mulai S(0, 0). Pemain bergerak 3 satuan ke kiri, 4 satuan ke bawah, lalu 5 satuan ke kanan. Koordinat akhir pemain adalah ....", "options": [{"key": "A", "text": "(2, −4)"}, {"key": "B", "text": "(−2, 4)"}, {"key": "C", "text": "(8, −4)"}, {"key": "D", "text": "(2, 4)"}], "answer": "A", "explanation": "Perubahan koordinat x adalah −3 + 5 = 2. Perubahan koordinat y adalah −4. Jadi, posisi akhirnya (2, −4)."}, {"number": 18, "level": 3, "type": "Pilihan Ganda", "objective": "Menganalisis posisi beberapa objek dan menyelesaikan masalah kontekstual pada bidang koordinat Kartesius.", "question": "Pada denah taman, Pos A berada di (−4, 1), Pos B di (−1, 1), dan Pos C di (3, 1). Jika jarak setiap satuan adalah 5 meter, jarak dari Pos A ke Pos C adalah ....", "options": [{"key": "A", "text": "25 meter"}, {"key": "B", "text": "30 meter"}, {"key": "C", "text": "35 meter"}, {"key": "D", "text": "40 meter"}], "answer": "C", "explanation": "Semua titik memiliki koordinat y yang sama sehingga jaraknya mendatar. Selisih x dari A ke C adalah 3 − (−4) = 7 satuan. Jarak sebenarnya 7 × 5 = 35 meter."}];
+let filtered=questions.slice(),current=0;
+const responses={},checked={};
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function graphSVG(graph){
+ const W=420,H=340,ox=210,oy=170,s=27;
+ let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bidang koordinat Kartesius"><defs><marker id="axisArrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#253653"/></marker></defs><rect width="420" height="340" fill="#f8fbff"/>`;
+ for(let i=-6;i<=6;i++){let x=ox+i*s,y=oy-i*s;svg+=`<line x1="${x}" y1="15" x2="${x}" y2="325" stroke="#dce4ef"/><line x1="35" y1="${y}" x2="385" y2="${y}" stroke="#dce4ef"/>`;}
+ svg+=`<line x1="25" y1="${oy}" x2="398" y2="${oy}" stroke="#253653" stroke-width="2.5" marker-end="url(#axisArrow)"/><line x1="${ox}" y1="330" x2="${ox}" y2="9" stroke="#253653" stroke-width="2.5" marker-end="url(#axisArrow)"/><text x="398" y="194" font-size="16" fill="#253653">X</text><text x="222" y="16" font-size="16" fill="#253653">Y</text><text x="218" y="187" font-size="13" fill="#253653">O</text>`;
+ for(let i=-6;i<=6;i++){if(i!==0){svg+=`<text x="${ox+i*s-5}" y="${oy+19}" font-size="12" fill="#40516d">${i}</text><text x="${ox-20}" y="${oy-i*s+4}" font-size="12" fill="#40516d">${i}</text>`;}}
+ (graph.points||[]).forEach(p=>{const x=ox+p.x*s,y=oy-p.y*s;svg+=`<circle cx="${x}" cy="${y}" r="6" fill="#e34c65" stroke="#fff" stroke-width="1.5"/><text x="${x+10}" y="${y-10}" font-size="18" font-weight="bold" fill="#a51f3a">${esc(p.label)}</text>`;});
+ return svg+'</svg>';
+}
+function globalIndex(){return questions.indexOf(filtered[current]);}
+function answeredCount(){return questions.filter(q=>responses[q.number]!==undefined&&responses[q.number]!==null).length;}
+function updateProgress(){$('progressPill').textContent=`Terjawab ${answeredCount()} / ${questions.length}`;}
+function render(){
+ const q=filtered[current];if(!q)return;
+ $('levelPill').textContent='LEVEL '+q.level;$('numberPill').textContent='SOAL '+q.number;$('typePill').textContent=q.type;
+ $('counter').textContent=`${current+1} / ${filtered.length}`;$('questionTitle').textContent=`Pertanyaan ${q.number}`;
+ $('objective').textContent='Tujuan Pembelajaran: '+q.objective;$('questionText').textContent=q.question;
+ $('feedback').className='feedback';$('feedback').textContent='';$('explanation').className='explain';$('explanation').textContent='';$('hideBtn').style.display='none';
+ const area=$('interactionArea');area.innerHTML='';
+ if(q.graph){const g=document.createElement('div');g.className='graph-wrap';g.innerHTML=graphSVG(q.graph);area.appendChild(g);}
+ const selected=responses[q.number]||'';
+ const wrap=document.createElement('div');wrap.className='options';
+ q.options.forEach(o=>{
+  const label=document.createElement('label');label.className='option'+(selected===o.key?' selected':'');
+  if(checked[q.number]){if(o.key===q.answer)label.classList.add('correct');else if(selected===o.key)label.classList.add('wrong');}
+  label.innerHTML=`<input type="radio" name="answer" value="${esc(o.key)}" ${selected===o.key?'checked':''}><span><b>${esc(o.key)}.</b> ${esc(o.text)}</span>`;
+  label.querySelector('input').addEventListener('change',()=>{responses[q.number]=o.key;renderKeepScroll();});
+  wrap.appendChild(label);
+ });area.appendChild(wrap);
+ if(checked[q.number])showFeedback(q);
+ updateProgress();
+}
+function renderKeepScroll(){const y=window.scrollY;render();window.scrollTo(0,y);}
+function showFeedback(q){
+ const fb=$('feedback');fb.classList.add('show');const chosen=responses[q.number]||'';
+ const ok=chosen===q.answer;fb.classList.toggle('wrong',!ok);
+ fb.textContent=chosen?(ok?'Benar! Jawaban Anda tepat.':'Belum tepat. Periksa kembali pembahasan.'):'Belum ada jawaban yang dipilih.';
+}
+function showExplanation(q){
+ const opt=q.options.find(o=>o.key===q.answer);
+ $('explanation').textContent=`Kunci Jawaban: ${q.answer}. ${opt?opt.text:''}\n\n${q.explanation}`;
+ $('explanation').classList.add('show');$('hideBtn').style.display='inline-block';
+}
+function check(){
+ const q=filtered[current];if(!responses[q.number]){$('feedback').className='feedback show wrong';$('feedback').textContent='Pilih salah satu jawaban terlebih dahulu.';return;}
+ checked[q.number]=true;render();showExplanation(q);
+}
+function reveal(){const q=filtered[current];checked[q.number]=true;render();showExplanation(q);}
+function move(delta){current=Math.max(0,Math.min(filtered.length-1,current+delta));render();window.scrollTo(0,0);}
+$('prevBtn').addEventListener('click',()=>move(-1));$('nextBtn').addEventListener('click',()=>move(1));
+$('checkBtn').addEventListener('click',check);$('revealBtn').addEventListener('click',reveal);
+$('hideBtn').addEventListener('click',()=>{$('explanation').classList.remove('show');$('hideBtn').style.display='none';});
+document.querySelectorAll('[data-level]').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('[data-level]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+ const level=btn.dataset.level;filtered=level==='all'?questions.slice():questions.filter(q=>q.level===Number(level));current=0;render();window.scrollTo(0,0);
+}));
+$('projectorBtn').addEventListener('click',()=>document.body.classList.toggle('projector'));
+$('fullscreenBtn').addEventListener('click',()=>{if(!document.fullscreenElement){document.documentElement.requestFullscreen?.();}else{document.exitFullscreen?.();}});
+render();
+</script></body></html>

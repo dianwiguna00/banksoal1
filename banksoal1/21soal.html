@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KELAS BELAJAR | Presentasi Bilangan Bentuk Akar</title>
+<style>
+:root{--bg:#080d25;--panel:#111b3d;--panel2:#172650;--cyan:#42d9f5;--blue:#477bff;--purple:#8d63ff;--yellow:#ffd45c;--text:#f5f7ff;--muted:#b9c5e6;--green:#43d69a;--red:#ff7186}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 0%,#25316a 0,#101738 38%,#080d25 78%);color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:20px}
+button,select{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:14px 18px;font-weight:700;transition:.2s}button:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.app{display:grid;grid-template-columns:280px 1fr;min-height:100vh}.side{padding:24px 18px;background:#0b1230dd;border-right:1px solid #ffffff18;display:flex;flex-direction:column;gap:20px}
+.brand{font-size:25px;font-weight:900;letter-spacing:1px}.brand span{color:var(--cyan)}.tagline{font-size:20px;color:var(--muted);line-height:1.4}
+.levels{display:grid;gap:10px}.level-btn{background:#172348;color:#eaf1ff;text-align:left;border:1px solid #ffffff14}.level-btn.active{background:linear-gradient(110deg,#2864d9,#714ee4);border-color:#83dfff}
+.progressbox{margin-top:auto;background:#111d40;border:1px solid #ffffff18;padding:16px;border-radius:18px}.progressbar{height:10px;background:#26365f;border-radius:20px;overflow:hidden;margin:10px 0}.progressbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple))}
+main{padding:26px clamp(16px,3vw,44px);max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:1.5px}.tools{display:flex;gap:10px;flex-wrap:wrap}.tool{background:#26345f;color:white;border:1px solid #ffffff20}.hero{padding:22px 26px;border-radius:24px;background:linear-gradient(115deg,#1a3470,#39266f);border:1px solid #8ca8ff44;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.hero h1{font-size:clamp(28px,4vw,42px);margin:0 0 8px}.hero p{margin:0;color:#d8e4ff;line-height:1.5}.hero-art{font-size:64px;filter:drop-shadow(0 8px 14px #050a25)}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.pill{padding:10px 15px;border-radius:999px;background:#17264e;border:1px solid #526ca8;color:#eaf4ff;font-weight:700}.pill.level{background:#392d70;border-color:#9475ff;color:#e8ddff}.pill.number{background:#103c55;border-color:#43d9f5;color:#bff7ff}
+.card{background:linear-gradient(145deg,#14234a,#101a39);border:1px solid #ffffff20;border-radius:24px;padding:clamp(20px,3vw,34px);box-shadow:0 20px 55px #03071855}.cardhead{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}.card h2{font-size:26px;margin:0}.objective{color:#d1ddff;background:#0b1534;padding:14px 16px;border-radius:14px;border-left:4px solid var(--yellow);line-height:1.5;margin-bottom:20px}
+.question{font-size:clamp(21px,2vw,25px);line-height:1.65;white-space:pre-wrap;color:#fff;margin:0 0 22px}.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}.option{display:flex;align-items:flex-start;gap:12px;text-align:left;color:white;background:#1b2b56;border:2px solid #3b4d7b;padding:16px;border-radius:16px;line-height:1.45;min-height:66px}.option input{width:22px;height:22px;accent-color:var(--cyan);flex:0 0 auto;margin-top:3px}.option.selected{border-color:var(--cyan);background:#123c58}.option.correct{border-color:var(--green);background:#104536}.option.wrong{border-color:var(--red);background:#4a2035}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.primary{background:linear-gradient(100deg,#2386e9,#7556ed);color:white}.secondary{background:#27365e;color:white;border:1px solid #ffffff24}.success{background:#146c55;color:white}.feedback{margin-top:18px;padding:18px;border-radius:16px;line-height:1.55;display:none;background:#0d2b2b;border:1px solid #35bd91}.feedback.show{display:block}.feedback.wrong{background:#3a1d30;border-color:#e66b8b}.explain{margin-top:16px;padding:18px;background:#0b1532;border:1px solid #344775;border-radius:16px;line-height:1.6;white-space:pre-wrap;display:none}.explain.show{display:block}.bottomnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px}.small{color:var(--muted);font-size:20px}.jump{background:#1a2850;color:white;border:1px solid #ffffff25;padding:12px;border-radius:12px;max-width:115px}
+footer{text-align:center;color:#8f9fc8;margin:24px 0 8px;font-size:20px}
+body.projector .side{display:none}body.projector .app{display:block}body.projector main{max-width:1600px;padding:3vh 4vw}body.projector .hero{padding:30px}body.projector .question{font-size:30px}body.projector .card{padding:40px}
+@media(max-width:850px){.app{grid-template-columns:1fr}.side{padding:14px;border-right:0;border-bottom:1px solid #ffffff18}.levels{display:flex;overflow:auto}.level-btn{white-space:nowrap}.progressbox{display:none}main{padding:18px 14px}.hero-art{display:none}.options{grid-template-columns:1fr}.bottomnav{flex-wrap:wrap}.question{font-size:21px}}
+@media print{.side,.tools,.actions,.bottomnav,footer{display:none!important}body{background:#fff;color:#111}.card,.hero{background:#fff;color:#111;box-shadow:none;border:1px solid #aaa}.question{color:#111}}
+
+/* MODE FULL SCREEN: soal dan pilihan menjadi fokus utama */
+body{overflow-x:hidden}
+.app{display:block;min-height:100vh}
+.side{display:none!important}
+main{width:100%;max-width:none;min-height:100vh;margin:0;padding:clamp(12px,2vw,28px) clamp(14px,3vw,48px);display:flex;flex-direction:column}
+.top{position:relative;z-index:20;flex:0 0 auto;margin-bottom:clamp(10px,1.5vh,18px);align-items:center}
+.top .brand{font-size:22px}
+.control-menu{position:relative}
+.control-menu summary{list-style:none;cursor:pointer;background:linear-gradient(100deg,#2386e9,#7556ed);border:1px solid #a8dfff66;border-radius:14px;padding:13px 20px;font-weight:900;color:#fff;min-height:52px;display:flex;align-items:center}
+.control-menu summary::-webkit-details-marker{display:none}
+.control-menu[open] summary{border-radius:14px 14px 0 0}
+.control-panel{position:absolute;right:0;top:100%;width:min( min(760px, calc(100vw - 28px)), 760px);max-height:75vh;overflow:auto;background:#0c1534;border:1px solid #6386d9;border-radius:16px 0 16px 16px;padding:16px;box-shadow:0 20px 60px #000b;display:grid;gap:14px}
+.control-section{display:grid;gap:9px}
+.control-section>b{color:var(--cyan);font-size:20px}
+.control-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.control-row button{font-size:20px;padding:11px 14px}
+.control-row label{color:var(--muted)}
+.control-row .level-btn{background:#172348;color:#eaf1ff;border:1px solid #ffffff24}
+.control-row .level-btn.active{background:linear-gradient(110deg,#2864d9,#714ee4);border-color:#83dfff}
+.hero{display:none}
+.meta{flex:0 0 auto;margin-bottom:clamp(10px,1.5vh,18px)}
+.card{flex:1 1 auto;min-height:0;width:100%;display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(18px,3vw,48px);border-radius:26px}
+.cardhead{margin-bottom:clamp(12px,2vh,24px)}
+.card h2{font-size:clamp(24px,2.2vw,34px)}
+.objective{font-size:20px;margin-bottom:clamp(14px,2vh,26px)}
+.question{font-size:clamp(25px,3vw,42px);line-height:1.48;margin-bottom:clamp(18px,3vh,34px)}
+.options{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.8vw,22px)}
+.option{font-size:clamp(22px,2.1vw,30px);padding:clamp(16px,2vw,26px);min-height:86px;align-items:center}
+.option input{width:26px;height:26px}
+.feedback,.explain{font-size:21px}
+footer{display:none}
+body.projector main{max-width:none;min-height:100vh;padding:2vh 3vw}
+body.projector .card{padding:clamp(22px,4vw,60px)}
+body.projector .question{font-size:clamp(28px,3.4vw,48px)}
+body.projector .option{font-size:clamp(24px,2.4vw,34px);min-height:96px}
+@media(max-width:700px){
+ main{padding:12px}
+ .top{align-items:flex-start}
+ .top .eyebrow{font-size:20px}
+ .control-panel{right:0;width:calc(100vw - 24px)}
+ .options{grid-template-columns:1fr}
+ .question{font-size:25px;line-height:1.45}
+ .option{font-size:22px;min-height:72px}
+ .card{padding:18px}
+ .meta{gap:7px}
+ .pill{font-size:20px;padding:8px 11px}
+}
+\n
+/* Seluruh teks diseragamkan menjadi 20 px */
+html, body, body *{font-size:20px!important}
+.below-controls{display:grid;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid #ffffff24}
+.below-controls .control-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.below-controls button{min-height:50px;padding:12px 16px}
+.below-controls .jump{max-width:140px}
+.question{line-height:1.55}
+.option{line-height:1.5}
+@media(max-width:700px){
+ .below-controls .control-row{display:grid;grid-template-columns:1fr}
+ .below-controls button,.below-controls .jump{width:100%;max-width:none}
+}
+
+
+/* Tombol tampilan dan filter level tampil langsung tanpa menu dropdown */
+.top-controls{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:12px;max-width:100%}
+.top-control-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.control-caption{font-weight:900;color:var(--cyan);letter-spacing:.5px}
+.top-control-group button{min-height:46px;padding:10px 14px}
+.top-control-group .level-btn{background:#172348;color:#eaf1ff;border:1px solid #ffffff24}
+.top-control-group .level-btn.active{background:linear-gradient(110deg,#2864d9,#714ee4);border-color:#83dfff}
+.control-menu,.control-menu summary,.control-panel{display:none!important}
+@media(max-width:760px){
+ .top{align-items:flex-start;flex-direction:column}
+ .top-controls{justify-content:flex-start;width:100%}
+ .top-control-group{width:100%}
+ .top-control-group button{flex:1 1 auto}
+}
+
+
+.statement-item{background:#0b1534;border:1px solid #344775;border-radius:16px;padding:18px;margin-bottom:14px}
+.statement-text{font-size:20px!important;line-height:1.5;margin-bottom:12px;white-space:pre-wrap}
+.statement-choices{display:flex;gap:12px;flex-wrap:wrap}
+.statement-choice{min-height:54px;min-width:130px;align-items:center;flex:0 0 auto}
+.statement-choice input{width:22px;height:22px}
+
+
+/* Navigasi dan tombol aksi: satu baris tetap di bagian bawah layar */
+main{padding-bottom:112px!important}
+.card{padding-bottom:clamp(22px,3vw,48px)}
+.below-controls{
+  position:fixed!important;
+  left:0;right:0;bottom:0;
+  z-index:1000;
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  align-items:center;
+  gap:10px;
+  margin:0!important;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap;
+  background:rgba(7,13,37,.97);
+  border-top:1px solid #6386d9;
+  box-shadow:0 -10px 30px #0008;
+  scrollbar-width:thin;
+  backdrop-filter:blur(12px);
+}
+.below-controls .control-row{display:contents!important}
+.below-controls button,
+.below-controls label,
+.below-controls select{
+  flex:0 0 auto!important;
+  width:auto!important;
+  max-width:none!important;
+  white-space:nowrap;
+}
+.below-controls button{min-height:50px;padding:12px 16px}
+.below-controls label{color:var(--muted)}
+.below-controls .jump{min-width:90px}
+@media(max-width:700px){
+  main{padding-bottom:112px!important}
+  .below-controls{gap:8px;padding:10px 10px calc(10px + env(safe-area-inset-bottom))}
+  .below-controls button{padding:11px 13px;min-height:48px}
+}
+@media print{.below-controls{display:none!important}}
+
+
+/* Kotak pilihan A-D mengikuti tinggi teks masing-masing, bukan tinggi baris terpanjang */
+.options{
+  align-items:start!important;
+  grid-auto-rows:min-content!important;
+}
+.option{
+  height:auto!important;
+  min-height:0!important;
+  align-self:start!important;
+  align-items:flex-start!important;
+  padding:16px 18px!important;
+  line-height:1.5!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere;
+}
+.option > span,
+.option .option-text{
+  min-width:0;
+  flex:1 1 auto;
+  white-space:normal!important;
+  overflow-wrap:anywhere;
+}
+.option input{
+  flex:0 0 22px!important;
+  margin-top:4px!important;
+}
+@media(max-width:700px){
+  .options{grid-template-columns:minmax(0,1fr)!important}
+  .option{width:100%;padding:14px 16px!important}
+}
+
+
+/* Pengaturan khusus presentasi Bilangan Bentuk Akar */
+.statement-item{display:block;width:100%;padding:18px;margin:0 0 14px;background:#0b1534;border:1px solid #344775;border-radius:16px}
+.statement-text{font-size:20px!important;line-height:1.55!important;white-space:normal;overflow-wrap:anywhere;margin-bottom:14px}
+.statement-choices{display:flex;gap:12px;flex-wrap:wrap}
+.statement-choice{min-width:132px;min-height:54px;flex:0 0 auto;align-items:center}
+.statement-choice input{width:22px;height:22px}
+#options{align-content:start}
+@media(max-width:700px){.statement-item{padding:14px}.statement-choices{gap:8px}.statement-choice{flex:1 1 120px}}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side" aria-hidden="true"></aside>
+<main>
+ <div class="top"><div><div class="brand">KELAS <span>BELAJAR</span></div><div class="eyebrow">PRESENTASI INTERAKTIF · UNIT BILANGAN BENTUK AKAR</div></div>
+ <div class="top-controls">
+  <div class="top-control-group">
+   <span class="control-caption">LEVEL SOAL</span>
+   <button class="level-btn active" data-level="all">Semua Level</button>
+   <button class="level-btn" data-level="1">Level 1</button>
+   <button class="level-btn" data-level="2">Level 2</button>
+   <button class="level-btn" data-level="3">Level 3</button>
+  </div>
+  <div class="top-control-group display-controls">
+   <span class="control-caption">TAMPILAN</span>
+   <button class="tool" id="projectorBtn">⛶ Mode Presentasi</button>
+   <button class="tool" id="fullscreenBtn">Layar Penuh</button>
+   <button class="tool" onclick="window.print()">Cetak</button>
+  </div>
+ </div></div>
+ <section class="hero"><div><h1>Tantangan Aljabar</h1><p>Amati soal, diskusikan bersama, pilih atau tentukan jawaban,<br>lalu tampilkan kunci dan pembahasannya.</p></div><div class="hero-art">∑ ✦</div></section>
+ <div class="meta"><span class="pill level" id="levelPill">LEVEL 1</span><span class="pill number" id="numberPill">SOAL 1</span><span class="pill" id="typePill">Pilihan Ganda</span></div>
+ <section class="card">
+  <div class="cardhead"><h2 id="questionTitle">Pertanyaan</h2><span class="small" id="counter">1 / 18</span></div>
+  <div class="objective" id="objective"></div>
+  <div class="question" id="questionText"></div>
+  <div class="options" id="options"></div>
+  <div class="below-controls">
+   <div class="control-row">
+    <button class="secondary" id="prevBtn">← Soal Sebelumnya</button>
+    
+    <button class="primary" id="nextBtn">Soal Selanjutnya →</button>
+   </div>
+   <div class="control-row">
+    <button class="primary" id="checkBtn">Periksa Jawaban</button>
+    <button class="secondary" id="revealBtn">Tampilkan Kunci & Pembahasan</button>
+    <button class="secondary" id="hideBtn">Sembunyikan Pembahasan</button>
+   </div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="explain" id="explanation"></div>
+ </section>
+ 
+ <footer>KELAS BELAJAR · Belajar Aktif, Berpikir Kritis, Raih Prestasi</footer>
+</main>
+</div>
+<script>
+const questions = [{"number":1,"level":1,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Keliling dari suatu taman berbentuk segitiga sama sisi dengan panjang salah satu sisinya adalah 2√7 meter adalah ....","options":[{"key":"A","text":"2√7 meter"},{"key":"B","text":"6√3 meter"},{"key":"C","text":"5√7 meter"},{"key":"D","text":"6√7 meter"}],"answer":"D. 6√7 meter","explanation":"Taman berbentuk segitiga sama sisi memiliki tiga sisi yang panjangnya sama.\nKeliling taman = 3 × sisi = 3 × 2√7 meter.\nKalikan bilangan bulat di luar akar: (3 × 2)√7 = 6√7 meter.\nJawaban Benar: D","correct":"D"},{"number":2,"level":1,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Hasil dari operasi penjumlahan bentuk akar √18 + √8 adalah ....","options":[{"key":"A","text":"√26"},{"key":"B","text":"5√2"},{"key":"C","text":"10"},{"key":"D","text":"10√2"}],"answer":"B. 5√2","explanation":"Langkah 1: Sederhanakan masing-masing bentuk akar terlebih dahulu dengan mencari faktor bilangan kuadrat terbesar: √18 = √(9 × 2) = 3√2 dan √8 = √(4 × 2) = 2√2.\nLangkah 2: Jumlahkan kedua bentuk akar sejenis tersebut: 3√2 + 2√2 = 5√2.\nJawaban Benar: B","correct":"B"},{"number":3,"level":1,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Bentuk pangkat pecahan dari bilangan bentuk akar ⁴√(7³) adalah ....","options":[{"key":"A","text":"7^(1/4)"},{"key":"B","text":"7^(1/3)"},{"key":"C","text":"7^(3/4)"},{"key":"D","text":"7^(4/3)"}],"answer":"C. 7^(3/4)","explanation":"Langkah 1: Gunakan rumus hubungan antara bentuk akar dan pangkat pecahan yaitu ⁿ√(aᵐ) = a^(m/n).\nLangkah 2: Terapkan rumus tersebut pada ⁴√(7³) sehingga diperoleh eksponen pecahan 7^(3/4).\nJawaban Benar: C","correct":"C"},{"number":4,"level":2,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Bentuk rasional dari pecahan 8/(3 − √5) adalah ....","options":[{"key":"A","text":"6 − 2√5"},{"key":"B","text":"6 − √5"},{"key":"C","text":"6 + √5"},{"key":"D","text":"6 + 2√5"}],"answer":"D. 6 + 2√5","explanation":"Langkah 1: Kalikan pembilang dan penyebut pecahan dengan sekawan dari penyebutnya, yaitu (3 + √5).\n8/(3 − √5) × (3 + √5)/(3 + √5) = 8(3 + √5)/(3² − (√5)²).\nLangkah 2: Selesaikan perhitungan bagian penyebut dan sederhanakan bentuk pecahannya.\n8(3 + √5)/(9 − 5) = 8(3 + √5)/4 = 2(3 + √5) = 6 + 2√5.\nJawaban Benar: D","correct":"D"},{"number":5,"level":2,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Sebuah tali pramuka yang panjangnya 10√24 meter dipotong-potong menjadi beberapa bagian yang sama panjang untuk mendirikan tenda. Jika panjang setiap potongan tali adalah 2√3 meter, berapakah banyak potongan tali yang diperoleh?","options":[{"key":"A","text":"10√2 potongan."},{"key":"B","text":"10√3 potongan."},{"key":"C","text":"15√2 potongan."},{"key":"D","text":"15√3 potongan."}],"answer":"A. 10√2 potongan.","explanation":"Langkah 1: Membagi panjang total tali dengan panjang setiap potongan: (10√24)/(2√3) = 5√8 potongan.\nLangkah 2: Menyederhanakan bentuk akar hasil pembagian tersebut: 5√8 = 5 × 2√2 = 10√2 potongan.\nJawaban Benar: A","correct":"A"},{"number":6,"level":2,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Sebuah kotak penyimpanan beras tradisional (pedaringan) di Jawa berbentuk kubus dengan volume 24.000 cm³. Jika volume tersebut dapat disederhanakan dengan menarik akar pangkat tiga, panjang rusuk kotak tersebut adalah ....","options":[{"key":"A","text":"10∛3 cm"},{"key":"B","text":"20∛3 cm"},{"key":"C","text":"30∛3 cm"},{"key":"D","text":"40∛3 cm"}],"answer":"B. 20∛3 cm","explanation":"Panjang rusuk kubus (s) dengan volume (V) dirumuskan dengan s = ∛V.\nSubstitusikan volume kotak: s = ∛24.000 cm.\nSederhanakan bentuk akar pangkat tiga: ∛24.000 = ∛(8.000 × 3) = ∛8.000 × ∛3 = 20∛3 cm.\nJawaban Benar: B","correct":"B"},{"number":7,"level":3,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Seorang seniman di Gianyar, Bali, memahat patung kayu berbentuk kubus dengan panjang rusuk (3√5 − √2) cm. Untuk melindunginya dari rayap, seluruh permukaan patung kayu tersebut dilapisi cairan pelindung khusus. Berapakah luas permukaan patung kayu yang harus dilapisi cairan tersebut?","options":[{"key":"A","text":"(141 − 18√10) cm²"},{"key":"B","text":"(168 − 24√10) cm²"},{"key":"C","text":"(235 − 30√10) cm²"},{"key":"D","text":"(282 − 36√10) cm²"}],"answer":"D. (282 − 36√10) cm²","explanation":"Langkah 1: Menghitung kuadrat dari panjang rusuk (s²): s² = (3√5 − √2)² = (3√5)² − 2(3√5)(√2) + (√2)² = 45 − 6√10 + 2 = (47 − 6√10) cm².\nLangkah 2: Menghitung luas permukaan total kubus dengan rumus Lp = 6 × s².\nLangkah 3: Substitusi nilai s² ke rumus: Lp = 6 × (47 − 6√10) = (282 − 36√10) cm².\nJawaban Benar: D","correct":"D"},{"number":8,"level":3,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Seorang investor di Jakarta membeli sebuah lempengan emas murni dengan volume 18√3 sentimeter kubik. Jika luas alas lempengan tersebut adalah (3 + √3) sentimeter persegi, berapakah tebal lempengan emas tersebut dalam bentuk akar yang paling rasional?","options":[{"key":"A","text":"(9√3 − 9) cm"},{"key":"B","text":"(9√3 − 3) cm"},{"key":"C","text":"(9√3 + 3) cm"},{"key":"D","text":"(9√3 + 9) cm"}],"answer":"A. (9√3 − 9) cm","explanation":"Langkah 1: Tebal lempengan (t) diperoleh dari Volume dibagi Luas Alas: t = 18√3/(3 + √3).\nLangkah 2: Rasionalkan penyebut dengan mengalikan sekawan.\nt = 18√3(3 − √3)/((3 + √3)(3 − √3)) = (54√3 − 54)/(9 − 3) = (54√3 − 54)/6.\nt = 9√3 − 9 cm.\nJawaban Benar: A","correct":"A"},{"number":9,"level":3,"type":"Pilihan Ganda","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Seorang pengrajin ukiran kayu di Jepara membuat sebuah hiasan dinding berbentuk persegi dengan panjang sisi sebesar 4√6 cm. Di bagian tengah hiasan dinding tersebut, dibuat lubang dekoratif berbentuk persegi panjang dengan panjang 2√3 cm dan lebar √12 cm. Berapakah luas permukaan hiasan kayu yang tersisa setelah dilubangi?","options":[{"key":"A","text":"72 cm²"},{"key":"B","text":"84 cm²"},{"key":"C","text":"96 cm²"},{"key":"D","text":"108 cm²"}],"answer":"B. 84 cm²","explanation":"Langkah 1: Menghitung luas keseluruhan hiasan dinding sebelum dilubangi: L persegi = (4√6)² = 16 × 6 = 96 cm².\nLangkah 2: Menyederhanakan ukuran lebar lubang: l = √12 = 2√3 cm.\nLangkah 3: Menghitung luas lubang persegi panjang: L lubang = 2√3 × 2√3 = 4 × 3 = 12 cm².\nLangkah 4: Menghitung luas hiasan kayu yang tersisa: L sisa = 96 − 12 = 84 cm².\nJawaban Benar: B","correct":"B"},{"number":10,"level":1,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Pak Eko merancang dekorasi lantai bermotif marmer persegi dengan menyusun kepingan batu alam berukuran tertentu yang memiliki ukuran akar kuadrat sederhana untuk dihitung luas arealnya. Tentukan benar atau salah untuk setiap pernyataan berikut!","options":[],"answer":"","explanation":"Perkalian bilangan dalam radikan dikerjakan terlebih dahulu secara teoritis: √2 × √8 = √16 = 4 meter persegi.\nKunci pernyataan: Benar\n\nBentuk penjumlahan dua suku matematika yang sejenis didapat secara normal dari: (3 + 2)√6 = 5√6 meter persegi.\nKunci pernyataan: Benar\n\nPerolehan konstanta diselesaikan langsung melalui pembagian nilai di bawah tanda akar: √(32/2) = √16 = 4 meter.\nKunci pernyataan: Benar\n\nMerupakan miskonsepsi dari aturan prosedural aritmatika akar. Yang benar harus menjumlahkan koefisien luarnya saja: √5 + √5 = (1 + 1)√5 = 2√5 meter.\nKunci pernyataan: Salah","correct":"","statements":["Mengalikan panjang dimensi ukuran sisi ubin marmer √2 meter dengan √8 meter akan menghasilkan luas rasional bersih seluas 4 meter persegi.","Hasil penjumlahan dari marmer bernilai nominal penjangkauan luas 3√6 meter persegi dan 2√6 meter persegi adalah setara dengan 5√6 meter persegi.","Parameter nilai fungsional perbandingan berupa pecahan √32/√2 meter menghasilkan konstanta rasional mutlak berharga 4 meter.","Operasi penjumlahan panjang material marmer pelindung dasar √5 meter ditambah dengan ukuran sejenis √5 meter bernilai sebesar √10 meter."],"statementAnswers":["benar","benar","benar","salah"]},{"number":11,"level":1,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Perhatikan ekspresi perkalian bentuk aljabar distributif atau operasi gabungan dengan melibatkan bentuk akar di bawah ini. Tentukan benar atau salah untuk setiap nilai yang diajukan!","options":[],"answer":"","explanation":"Aturan operasi menyatakan perkalian dilakukan terhadap bilangan di luar tanda akar, yaitu 2 × 3 = 6, menjadi 6√5. Hasil ini bernilai benar.\nKunci pernyataan: Benar\n\nGunakan hukum distributif perkalian pada pertambahan: √2√3 + √2√5 = √6 + √10. Pernyataan benar.\nKunci pernyataan: Benar\n\nTerdapat kesalahan kalkulasi parsial. Cara mengalikannya yaitu koefisien dengan koefisien dan akar dengan akar: 3 × 2 × (√2 × √2) = 6 × 2 = 12. Suku √2 seharusnya sudah menghilang menjadi bentuk bulat utuh.\nKunci pernyataan: Salah\n\nMelalui pendistribusian diperoleh: (√5 × √5) − (2 × √5) = 5 − 2√5. Pernyataan ini benar.\nKunci pernyataan: Benar","correct":"","statements":["2(3√5) = 6√5","√2(√3 + √5) = √6 + √10","3√2(2√2) = 12√2","√5(√5 − 2) = 5 − 2√5"],"statementAnswers":["benar","benar","salah","benar"]},{"number":12,"level":1,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Sebuah kelompok belajar matematika mengidentifikasi hasil penjumlahan dan pengurangan bentuk akar sejenis berikut. Tentukan benar atau salah untuk setiap pernyataan berikut!","options":[],"answer":"","explanation":"Operasi penjumlahan dilakukan pada koefisien karena akarnya sejenis: 5√3 + 2√3 = (5 + 2)√3 = 7√3.\nKunci pernyataan: Benar\n\nOperasi pengurangan dilakukan pada koefisien karena akarnya sejenis: 8√5 − 3√5 = (8 − 3)√5 = 5√5.\nKunci pernyataan: Benar\n\nMiskonsepsi menjumlahkan nilai di bawah tanda akar. Penjumlahan bentuk akar sejenis tidak mengubah nilai akar, sehingga seharusnya tetap 9√2.\nKunci pernyataan: Salah\n\nMiskonsepsi mengabaikan koefisien 1 pada −√7 dan langsung mengurangkan tanda akarnya. Seharusnya 9√7 − 1√7 = 8√7.\nKunci pernyataan: Salah","correct":"","statements":["Hasil dari 5√3 + 2√3 adalah 7√3.","Hasil dari 8√5 − 3√5 adalah 5√5.","Hasil dari 4√2 + 5√2 adalah 9√4.","Hasil dari 9√7 − √7 adalah 9."],"statementAnswers":["benar","benar","salah","salah"]},{"number":13,"level":2,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Seorang perajin keramik membuat alas pajangan berbentuk segitiga siku-siku dengan panjang kedua sisi siku-sikunya adalah 2√2 cm dan √32 cm. Beri tanda centang (✓) pada setiap pernyataan yang benar!","options":[],"answer":"","explanation":"Panjang sisi kedua √32 = √(16 × 2) = 4√2 cm. Panjang ini tepat dua kali panjang sisi pertama yang bernilai 2√2 cm.\nKunci pernyataan: Benar\n\nSisi miring dihitung dengan rumus Phytagoras: c = √((2√2)² + (4√2)²) = √8 + 32 = √40 = 2√10 cm.\nKunci pernyataan: Salah\n\nLuas segitiga dihitung dengan L = ½ × a × t = ½ × 2√2 × 4√2 = 4 × 2 = 8 cm persegi.\nKunci pernyataan: Benar\n\nKeliling dihitung dengan menjumlahkan seluruh sisinya: 2√2 + 4√2 + 2√10 = 6√2 + 2√10 cm.\nKunci pernyataan: Benar","correct":"","statements":["Panjang sisi siku-siku kedua jika disederhanakan setara dengan dua kali panjang sisi siku-siku pertama.","Panjang sisi miring (hipotenusa) dari alas pajangan berbentuk segitiga siku-siku tersebut adalah 10√2 cm.","Luas dari alas pajangan berbahan keramik yang dibuat tersebut bernilai tepat 8 cm persegi.","Keliling keseluruhan dari segitiga alas pajangan keramik tersebut adalah 6√2 + 2√10 cm."],"statementAnswers":["benar","salah","benar","benar"]},{"number":14,"level":2,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Laju zat hara pertanian tanaman diringkas dalam indeks pengukuran variabel tingkat tinggi sebesar X = 12/(5 − √13) ppm. Tentukan benar atau salah untuk setiap pernyataan berikut yang terkait proses dan nilai rasional zat hara tersebut!","options":[],"answer":"","explanation":"Step 1: Mengganti relasi pertanda operasi bagian pembagi dasar pada koefisien untuk mencari penyeimbang radiks rasionalnya. Step 2: Merumuskan pecahan faktor bertanda kuadrat negatif ke positif sebagai basis pemicu rasionalnya yaitu 5 + √13. Pernyataan bernilai Benar.\nKunci pernyataan: Benar\n\nStep 1: Menyusun bagian kuadrat dari representasi operasional rumus (a − b)(a + b). Step 2: Memformulasikan proses angka real sesungguhnya 5² − (√13)² = 25 − 13 = 12, bukan 38. Pernyataan bernilai Salah.\nKunci pernyataan: Salah\n\nHasil rasionalisasi adalah 12(5 + √13)/12. Mengabaikan pembagi 12 membuat pernyataan ini salah.\nKunci pernyataan: Salah\n\nSetelah pembilang dan penyebut disederhanakan dengan faktor 12, diperoleh 5 + √13 ppm. Pernyataan bernilai Benar.\nKunci pernyataan: Benar","correct":"","statements":["Suku sekawan paling dasar dari bentuk irasional yang akan digunakan untuk merasionalkan persamaan laju X adalah 5 + √13.","Hasil penyelesaian dari perkalian bentuk sekawan di posisi pembagi bawah rasional laju tersebut jika dikalikan bernilai 38.","Hasil akhir parameter zat hara tanah X yang sudah dioperasikan rasionalnya secara penuh adalah 12(5 + √13) ppm.","Nilai paling sederhana secara bulat dan irasional akhir untuk X dari penyelesaian rasional adalah 5 + √13 ppm."],"statementAnswers":["benar","salah","salah","benar"]},{"number":15,"level":2,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Di sebuah pameran galeri kontemporer kota Jakarta, diletakkan modul plat hias instalasi yang perbandingannya dibuat serasi. Berdasarkan rancangan desainer grafisnya, didapatkan suatu fraksi penyeimbang teoretis untuk struktur utama yakni 8/(√5 − √3) unit. Beri tanda centang (✓) pada setiap pernyataan yang benar!","options":[],"answer":"","explanation":"Faktor operasi dari konjugat rasional ini menghasilkan selisih langsung dari masing-masing bilangan murninya di bawah akar: (√5 − √3)(√5 + √3) = 5 − 3 = 2 bukan 8. Berarti pernyataan salah.\nKunci pernyataan: Salah\n\nProses konversi rasionalisasinya: 8/(√5 − √3) × (√5 + √3)/(√5 + √3) = 8(√5 + √3)/(5 − 3) = 8(√5 + √3)/2 = 4(√5 + √3) = 4√5 + 4√3. Langkah analisis konversinya terbukti tepat dan benar.\nKunci pernyataan: Benar\n\nKomponen ke-1 terselesaikan bernilai 4√5. Masukkan kisarannya: 4 × 2.2 = 8.8. Berarti secara aritmetika pendekatan ini memiliki validitas matematis bernilai benar.\nKunci pernyataan: Benar\n\nSecara sains konsep pembagian oleh pecahan penyebut yang merupakan tipe akar irasional mempersulit perhitungan sehingga rasionalisasi dilakukan guna menyederhanakan perhitungan matematika praktis.\nKunci pernyataan: Benar","correct":"","statements":["Pengalian hasil bagi dari bagian terbawah fraksi yaitu bentuk radikal perkalian silang (√5 − √3)(√5 + √3) jika dicari mengarah pada nilai nominal pembilang bernilai senilai 8 saja.","Bila bentuk fraksi diselesaikan proses peniadaan penyebut dengan bentuk konjugasi rasionalisasi, didapatkan perwakilan sederhana fisis di rentang ekspresi sebesar 4√5 + 4√3.","Dalam praktek desainer jika satu suku konstanta depan saja dari hasil rasionalkannya didekati dengan mengestimasi perkalian bulat bernilai kasar √5 ≈ 2.2 didapatkan angka mendekati real senilai 8.8 unit.","Tujuan utama penggunakan teknik meminimalkan pecahan berbentuk akar penyebut semacam ini di fisika panggung adalah membebaskan sistem dari kelemahan pembagian bilangan irasional yang sulit dipergunakan secara praktis."],"statementAnswers":["salah","benar","benar","benar"]},{"number":16,"level":3,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Seorang pengrajin kaca tiup dekoratif di Cirebon sedang mengevaluasi kaca hias persegi panjang berdasar luasan pesanan khusus pembeli. Kaca motif A didesain memiliki panjang senilai 6/√3 cm dengan lebar penampang 2√3 cm. Sedangkan kaca motif B dibuat dengan panjang senilai 4√3 cm dengan lebar 12/√3 cm. Apabila biaya beli lembaran bahan kaca hias tersebut dikenai harga dasar Rp4.000,00 per cm². Beri tanda centang (✓) pada setiap pernyataan yang benar!","options":[],"answer":"","explanation":"Untuk Kaca A, panjang 6/√3 = 2√3 cm dan lebar 2√3 cm, sehingga Kaca A adalah persegi. Untuk Kaca B, lebar 12/√3 = 4√3 cm dan panjang 4√3 cm, sehingga Kaca B juga berbentuk persegi.\nKunci pernyataan: Benar\n\nLuas Kaca A = 2√3 × 2√3 = 12 cm². Luas Kaca B = 4√3 × 4√3 = 48 cm². Rasio Luas A : B = 12 : 48 = 1 : 4.\nKunci pernyataan: Benar\n\nBiaya kaca hias A = Luas Kaca A × Tarif per cm² = 12 × Rp4.000,00 = Rp48.000,00.\nKunci pernyataan: Benar\n\nLuas Kaca B = 48 cm², biaya pengadaannya adalah 48 × Rp4.000,00 = Rp192.000,00, bukan Rp240.000,00.\nKunci pernyataan: Salah","correct":"","statements":["Kedua kaca hias pesanan tersebut merupakan lembaran berbentuk bujur sangkar atau persegi karena panjang dan lebarnya sama besar setelah dirasionalkan.","Rasio perbandingan luas kaca motif A terhadap kaca motif B bernilai sederhana tepat senilai rasio perbandingan bulat 1:4.","Pembeli membayar senilai Rp48.000,00 sebagai pembiayaan dasar pengadaan untuk lembaran kaca motif dekorasi jenis A.","Tarif beli kaca hias jenis B tercatat senilai total Rp240.000,00 yang bernilai setara lima kali lipat penuh tarif biaya kaca jenis pertama."],"statementAnswers":["benar","benar","benar","salah"]},{"number":17,"level":3,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Pada program konservasi terumbu karang di Bunaken, dipasang cetakan beton pembibitan berbentuk limas segi empat beraturan, yang mana bagian alasnya berbentuk persegi dengan keliling 16√6 cm dan tinggi limas tersebut adalah √24 cm. Beri tanda centang (✓) pada setiap pernyataan yang benar!","options":[],"answer":"","explanation":"Panjang sisi alas a = 16√6/4 = 4√6 cm, bukan 8√6 cm.\nKunci pernyataan: Salah\n\nSetengah panjang sisi alas adalah 2√6 cm. Tinggi limas t = √24 = 2√6 cm. Tinggi bidang miring h = √((2√6)² + (2√6)²) = √24 + 24 = √48 = 4√3 cm.\nKunci pernyataan: Benar\n\nLuas alas limas A = a² = (4√6)² = 96 cm². Volume V = ⅓ × A × t = ⅓ × 96 × √24 = 32 × 2√6 = 64√6 cm³.\nKunci pernyataan: Benar\n\nLuas alas persegi cetakan beton tersebut adalah a² = (4√6)² = 16 × 6 = 96 cm².\nKunci pernyataan: Benar","correct":"","statements":["Panjang sisi alas persegi dari cetakan beton tersebut adalah 8√6 cm.","Tinggi bidang miring (segitiga tegak) dari cetakan beton tersebut adalah 4√3 cm.","Volume dari cetakan beton pembibitan tersebut adalah 64√6 cm³.","Luas permukaan bagian alas cetakan beton tersebut adalah 96 cm²."],"statementAnswers":["salah","benar","benar","benar"]},{"number":18,"level":3,"type":"Analisis Pernyataan","objective":"Mengidentifikasi, mengubah, menentukan hasil operasi hitung (penjumlahan, pengurangan, perkalian, dan pembagian) dan merasionalkan bentuk akar serta menyelesaikan permasalahan kontekstual yang terkait","question":"Pendistribusian lumbung pasokan beras regional oleh instansi penjamin mutu logistik Bulog Jawa Timur diposisikan di kabin berlubang baja kontainer angkut eksternal. Struktur penataan balok internal kargo penyimpanan memiliki spesifikasi penentu dimensi lebar panjang bersandarkan akar pangkat tiga yaitu panjang Lx = 2∛16 meter, lebar penopang lintasan dahan Ly = 3∛54 meter, dan ketebalan pembagi rak bertingkat sebesar Lz = 2∛250 meter. Volume muatan kargo penyimpanan ideal tersebut mematuhi rumus balok dasar volumetri yaitu V = Lx × Ly × Lz. Beri tanda centang (✓) pada setiap pernyataan yang benar mengenai analisis matematis penilai spesifikasi kargo penyuplai logistik tersebut!","options":[],"answer":"","explanation":"Sifat ekstraksi penyederhanaan akar pangkat tiga: Lx = 2∛16 = 2∛(8 × 2) = 2 × 2∛2 = 4∛2 meter.\nKunci pernyataan: Benar\n\nFungsi ketebalan pilar bertingkat adalah Lz = 2∛250 = 2∛(125 × 2) = 2 × 5∛2 = 10∛2 meter, bukan 6∛2 meter.\nKunci pernyataan: Salah\n\nPerkalian akar pangkat tiga: V = 4∛2 × 9∛2 × 10∛2 = (4 × 9 × 10) × ∛(2 × 2 × 2) = 360 × ∛8 = 360 × 2 = 720 m³.\nKunci pernyataan: Benar\n\nMelalui hukum hitung pembagian rasional, kapasitas tengah kontainer beras = 720/2 = 360 m³.\nKunci pernyataan: Benar","correct":"","statements":["Ukuran panjang tangki kargo jika dituliskan ke dalam bentuk akar pangkat tiga tersederhana setara dengan 4∛2 meter.","Sifat perkalian akar pangkat tiga dari tinggi kargo menghasilkan dimensi tinggi tangki penyimpan tersebut setara dengan 6∛2 meter.","Bentuk paling sederhana dari perhitungan total volume penampung bahan beras internal adalah 720 m³.","Volume setengah kapasitas penampungan wadah kargo dalam satu tangki penyimpanan setara dengan 360 m³."],"statementAnswers":["benar","salah","benar","benar"]}];
+let filtered = questions.slice(), index = 0, selected = "", selectedStatements = {}, score = 0, checked = new Set();
+const $ = id => document.getElementById(id);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function getStatements(q){ return q.statements || []; }
+function getStatementKeys(q){ return q.statementAnswers || []; }
+function render(){
+ const q=filtered[index]; if(!q)return;
+ $("levelPill").textContent="LEVEL "+q.level;$("numberPill").textContent="SOAL "+q.number;$("typePill").textContent=q.type;
+ $("counter").textContent=(index+1)+" / "+filtered.length;$("questionTitle").textContent="Pertanyaan";
+ $("objective").innerHTML="<b>Tujuan Pembelajaran:</b> "+esc(q.objective);
+ $("questionText").textContent=q.question;
+ $("options").innerHTML="";selected="";selectedStatements={};
+ if(q.type==="Pilihan Ganda"){
+  q.options.forEach(o=>{
+   const label=document.createElement("label");label.className="option";label.innerHTML=`<input type="radio" name="answer" value="${o.key}"><b>${o.key}.</b><span>${esc(o.text)}</span>`;
+   label.querySelector("input").addEventListener("change",()=>{selected=o.key;document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));label.classList.add("selected");});
+   $("options").appendChild(label);
+  });
+  $("checkBtn").style.display="inline-block";
+ } else {
+  const statements=getStatements(q);
+  statements.forEach((statement,i)=>{
+   const wrap=document.createElement("div");wrap.className="statement-item";
+   const text=document.createElement("div");text.className="statement-text";text.textContent=(i+1)+". "+statement;wrap.appendChild(text);
+   const choices=document.createElement("div");choices.className="statement-choices";
+   ["Benar","Salah"].forEach(val=>{
+    const label=document.createElement("label");label.className="option statement-choice";
+    label.innerHTML=`<input type="radio" name="statement${i}" value="${val.toLowerCase()}"><span>${val}</span>`;
+    label.querySelector("input").addEventListener("change",()=>{selectedStatements[i]=val.toLowerCase();choices.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));label.classList.add("selected");});
+    choices.appendChild(label);
+   });
+   wrap.appendChild(choices);$("options").appendChild(wrap);
+  });
+  $("checkBtn").style.display="inline-block";
+ }
+ $("feedback").className="feedback";$("feedback").style.display="none";$("feedback").textContent="";
+ $("explanation").classList.remove("show");$("explanation").textContent="";
+ $("hideBtn").style.display="none";
+ $("prevBtn").disabled=index===0;$("nextBtn").disabled=index===filtered.length-1;
+ 
+}
+function reveal(){const q=filtered[index];$("explanation").textContent=q.explanation||"Pembahasan tidak tersedia pada bagian sumber yang terbaca."; $("explanation").classList.add("show");$("hideBtn").style.display="inline-block";}
+function check(){
+ const q=filtered[index];
+ if(q.type==="Pilihan Ganda"){
+  if(!selected){$("feedback").textContent="Silakan pilih salah satu jawaban terlebih dahulu."; $("feedback").className="feedback show wrong";$("feedback").style.display="block";return;}
+  const ok=selected===q.correct;
+  if(ok&&!checked.has(q.number)){score++;checked.add(q.number);}
+  $("feedback").textContent=ok?"Tepat! Jawaban Anda benar.":"Belum tepat. Jawaban yang benar adalah "+(q.answer||q.correct)+".";
+  $("feedback").className="feedback show "+(ok?"":"wrong");$("feedback").style.display="block";
+  document.querySelectorAll("#options .option").forEach(el=>{const v=el.querySelector("input").value;if(v===q.correct)el.classList.add("correct");else if(v===selected&&!ok)el.classList.add("wrong");});
+ } else {
+  const statements=getStatements(q), keys=getStatementKeys(q);
+  if(!statements.length || keys.length!==statements.length){$("feedback").textContent="Kunci untuk soal ini belum lengkap pada sumber, sehingga pemeriksaan otomatis belum dapat dilakukan."; $("feedback").className="feedback show wrong";$("feedback").style.display="block";return;}
+  const missing=statements.map((_,i)=>i).filter(i=>!selectedStatements[i]);
+  if(missing.length){$("feedback").textContent="Silakan tentukan Benar atau Salah untuk setiap pernyataan terlebih dahulu."; $("feedback").className="feedback show wrong";$("feedback").style.display="block";return;}
+  let correctCount=0;
+  statements.forEach((_,i)=>{
+   const choices=document.querySelectorAll(`input[name="statement${i}"]`);
+   const chosen=selectedStatements[i], ok=chosen===keys[i];
+   if(ok)correctCount++;
+   choices.forEach(input=>{const label=input.closest(".option");if(input.value===keys[i])label.classList.add("correct");else if(input.value===chosen&&!ok)label.classList.add("wrong");});
+  });
+  const allCorrect=correctCount===statements.length;
+  if(allCorrect&&!checked.has(q.number)){score++;checked.add(q.number);}
+  $("feedback").textContent=`Hasil: ${correctCount} dari ${statements.length} pernyataan benar dinilai. ${allCorrect?"Semua jawaban tepat!":"Periksa kembali jawaban yang belum tepat."}`;
+  $("feedback").className="feedback show "+(allCorrect?"":"wrong");$("feedback").style.display="block";
+ }
+ reveal();
+}
+function setLevel(level){
+ filtered=level==="all"?questions.slice():questions.filter(q=>String(q.level)===level);index=0;
+ document.querySelectorAll(".level-btn").forEach(b=>b.classList.toggle("active",b.dataset.level===level));render();
+}
+document.querySelectorAll(".level-btn").forEach(b=>b.addEventListener("click",()=>setLevel(b.dataset.level)));
+$("checkBtn").addEventListener("click",check);$("revealBtn").addEventListener("click",reveal);
+$("hideBtn").addEventListener("click",()=>{$("explanation").classList.remove("show");$("hideBtn").style.display="none";});
+$("prevBtn").addEventListener("click",()=>{if(index>0){index--;render();}});
+$("nextBtn").addEventListener("click",()=>{if(index<filtered.length-1){index++;render();}}); // Bisa lanjut tanpa menjawab soal.
+
+$("projectorBtn").addEventListener("click",()=>document.body.classList.toggle("projector"));
+$("fullscreenBtn").addEventListener("click",()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();});
+document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"&&index<filtered.length-1){index++;render();}if(e.key==="ArrowLeft"&&index>0){index--;render();}if(e.key.toLowerCase()==="p")document.body.classList.toggle("projector");});
+render();
+</script>
+</body></html>
